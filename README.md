@@ -20,6 +20,15 @@ Metacello new
 ```
 There are examples in the two classes `ObjDiaModel` and `SeqPlantUMLFromTally`.
 
+### Filters
+#### Object diagrams
+There are two filters `buildFilter` and `presentationFilter`. The build filter is used to delimit the transitive closure from the root. The filtering algorithms are in `ObjDiaFilter`. They have some hardwireing, and then *inclusion* filters which tells what to include, and some *exclusion* filters applied after the inclusive. The *category* filtes work by comparing the category of the object (`object class category`) to the prefix given to `include/excludeCategory:`. This allows you to include a broad category, and then remove specific sub-categories.
+
+#### Sequence Diagrams
+The filtering mechanism is not so generic here. But you can give a list of category prefixes to exclude, and specific selectors not to include.
+
+### in-word image or webbrowser svg
+
 It is possible to let the tools either produce an image which can be viewed in-image, 
 or a svg file which is shown in an external webbrowser. The svg has a few advantages
 
