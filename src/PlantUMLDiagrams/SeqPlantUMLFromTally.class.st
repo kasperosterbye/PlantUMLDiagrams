@@ -17,26 +17,16 @@ Class {
 { #category : #examples }
 SeqPlantUMLFromTally class >> example1 [
 	<example>
-	self openForm: (self 
+	self 
 		seqDiagramFor: [ Float pi printString] 
 		in: {'Kernel-Numbers'. 'Collection-Strings'} 
-		skipSelectors: #(on:)).
+		skipSelectors: #(on:).
 ]
 
 { #category : #examples }
 SeqPlantUMLFromTally class >> example2 [
 	<example>
-	self openForm: (self seqDiagramFor: [ 4 factorial ]).
-]
-
-{ #category : #'as yet unclassified' }
-SeqPlantUMLFromTally class >> openForm: form [
-	| window scrollPane |
-	window := SystemWindow labelled: 'Sequence Diagram'.
-	scrollPane := ScrollPane new.
-	scrollPane scroller addMorph: form asMorph.
-	window addMorph: scrollPane frame: (0@0 corner: 1@1).
-	window openInWorld.
+		self seqDiagramFor: [ 4 factorial ].
 ]
 
 { #category : #'as yet unclassified' }
@@ -53,7 +43,7 @@ SeqPlantUMLFromTally class >> seqDiagramFor: aBlock in: packageList [
 SeqPlantUMLFromTally class >> seqDiagramFor: aBlock in: packageList skipSelectors: selectors [
 	|  ulmSource |
 	ulmSource := self new umlForBlock: aBlock  in: packageList  skipSelectors: selectors .
-	^ PlantUMLBridge imageFromUML: ulmSource.
+	^ PlantUMLBridge webbrowseUML:  ulmSource.
 ]
 
 { #category : #'as yet unclassified' }
