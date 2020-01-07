@@ -1,0 +1,34 @@
+# PlantUMLDiagrams
+
+This project is able to create two kinds of uml like diagrams from the dynamic state of the image.
+
+- Object diagrams. You pass a root from which to investigate, 
+  and a diagram is created based on reachability from that root, but *filtered* by a custom filter.
+- Sequence diagrams. Based on a block, the block is run and based on the call tally, a sequence diagram is created. 
+  The tally is filtered to allow you to focus on certain aspects of the call sequence.
+  
+The two diagrams are ment as a tool for investigating code and object structures 
+when you as developer is trying to understand the undocumented architecture of legacy code.
+
+You can load the tools using:
+
+```smalltalk
+Metacello new
+   baseline: 'PlantUMLDiagrams';
+   repository: 'github://kasperosterbye/PlantUMLDiagrams';
+   load.
+```
+There are examples in the two classes `ObjDiaModel` and `SeqPlantUMLFromTally`.
+
+It is possible to let the tools either produce an image which can be viewed in-image, 
+or a svg file which is shown in an external webbrowser. The svg has a few advantages
+
+- the images do not fill up the image
+- they load faster
+- they are not restricted to 2000x2000 pixels
+- they are zoomable
+
+The both tools use the <https://plantuml.com> as the background rendering tool. 
+In particular it used a bridge from smalltalk to plantuml originally written by 
+C. Furmann (<https://github.com/fuhrmanator/PlantUMLPharoGizmo>).
+
